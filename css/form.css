@@ -1,0 +1,199 @@
+/* ==========================================================================
+   FORM.CSS - Estilos para Formulario Avanzado y Estados de Validación
+   ========================================================================== */
+
+.form-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Fieldset y Legend */
+.form-fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background-color: var(--bg-surface);
+}
+
+.form-fieldset legend {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    padding: 0 0.5rem;
+}
+
+/* Layout de inputs con CSS Grid */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+/* Grupos de formularios */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    position: relative;
+}
+
+.form-group label,
+.label-group {
+    font-size: 0.925rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Controles de entrada (Inputs, Selects, Textareas) */
+.form-control {
+    width: 100%;
+    font-family: inherit;
+    font-size: 0.975rem;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Radios personalizados con Flexbox */
+.radio-options-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    padding: 0.6rem 0.85rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.radio-label:hover {
+    background-color: var(--bg-alt);
+    border-color: var(--color-primary);
+}
+
+.radio-label input[type="radio"] {
+    accent-color: var(--color-primary);
+    width: 18px;
+    height: 18px;
+}
+
+/* Checkboxes personalizados con Grid */
+.checkbox-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    padding: 0.6rem 0.85rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.checkbox-label:hover {
+    background-color: var(--bg-alt);
+    border-color: var(--color-primary);
+}
+
+.checkbox-label input[type="checkbox"] {
+    accent-color: var(--color-primary);
+    width: 18px;
+    height: 18px;
+}
+
+/* Contador de caracteres para textarea */
+.char-counter {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+/* 2. Estados de Validación en Tiempo Real */
+.feedback-message {
+    font-size: 0.825rem;
+    min-height: 1.2rem;
+    display: block;
+    transition: color var(--transition-fast);
+}
+
+/* Estado Válido */
+.form-group.is-valid .form-control {
+    border-color: var(--color-success);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+    padding-right: 2.5rem;
+}
+
+.form-group.is-valid .feedback-message {
+    color: var(--color-success);
+}
+
+/* Estado Inválido (Error) */
+.form-group.is-invalid .form-control {
+    border-color: var(--color-error);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dc2626'%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px;
+    padding-right: 2.5rem;
+}
+
+.form-group.is-invalid .feedback-message {
+    color: var(--color-error);
+}
+
+/* Botones del formulario */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
