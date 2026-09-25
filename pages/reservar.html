@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Turno | Arena Rosario</title>
+    <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
+    <!-- Estilos CSS nativos -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/form.css">
+</head>
+<body>
+
+    <!-- Header y Navegación -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Arena<strong>Rosario</strong></span>
+            </a>
+
+            <button class="menu-toggle" id="btn-menu" aria-label="Abrir menú de navegación">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="servicios.html" class="nav-link">Canchas y Servicios</a></li>
+                    <li><a href="reservar.html" class="nav-link active">Reservar Turno</a></li>
+                    <li><a href="mis-reservas.html" class="nav-link">Mis Reservas</a></li>
+                </ul>
+
+                <button class="theme-toggle" id="btn-theme" title="Cambiar modo de color">
+                    <span class="theme-icon" id="theme-icon">🌙</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-header container">
+            <h1>Reserva de Turnos Online</h1>
+            <p>Completá el formulario para asegurar tu cancha. Validación y confirmación inmediata.</p>
+        </section>
+
+        <!-- Contenedor del Formulario con diseño CSS Grid/Flex -->
+        <section class="section container">
+            <div class="form-wrapper">
+
+                <!-- Mensaje de alerta general (éxito o error) -->
+                <div class="alert hidden" id="form-alert" role="alert"></div>
+
+                <form id="form-reserva" class="booking-form" novalidate>
+                    
+                    <!-- 1. Datos personales (Fieldset) -->
+                    <fieldset class="form-fieldset">
+                        <legend>1. Datos del Titular</legend>
+
+                        <div class="form-grid-2">
+                            <!-- Campo 1: Nombre y Apellido (text) -->
+                            <div class="form-group" id="group-nombre">
+                                <label for="nombre">Nombre y Apellido *</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej: Juan Pérez" required>
+                                <span class="feedback-message" id="msg-nombre"></span>
+                            </div>
+
+                            <!-- Campo 2: Email (email) -->
+                            <div class="form-group" id="group-email">
+                                <label for="email">Correo Electrónico *</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="juan@ejemplo.com" required>
+                                <span class="feedback-message" id="msg-email"></span>
+                            </div>
+                        </div>
+
+                        <!-- Campo 3: Teléfono (tel) -->
+                        <div class="form-group" id="group-telefono">
+                            <label for="telefono">Teléfono / WhatsApp *</label>
+                            <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="Ej: 3411234567 (sin 0 ni 15)" required>
+                            <span class="feedback-message" id="msg-telefono"></span>
+                        </div>
+                    </fieldset>
+
+                    <!-- 2. Datos de la Cancha y Horario (Fieldset) -->
+                    <fieldset class="form-fieldset">
+                        <legend>2. Detalles del Turno</legend>
+
+                        <div class="form-grid-2">
+                            <!-- Campo 4: Fecha (date) -->
+                            <div class="form-group" id="group-fecha">
+                                <label for="fecha">Fecha del Turno *</label>
+                                <input type="date" id="fecha" name="fecha" class="form-control" required>
+                                <span class="feedback-message" id="msg-fecha"></span>
+                            </div>
+
+                            <!-- Campo 5: Horario (select) -->
+                            <div class="form-group" id="group-horario">
+                                <label for="horario">Horario Disponible *</label>
+                                <select id="horario" name="horario" class="form-control" required>
+                                    <option value="" disabled selected>Seleccioná un horario</option>
+                                    <option value="17:00">17:00 a 18:00 hs</option>
+                                    <option value="18:00">18:00 a 19:00 hs</option>
+                                    <option value="19:00">19:00 a 20:00 hs</option>
+                                    <option value="20:00">20:00 a 21:00 hs</option>
+                                    <option value="21:00">21:00 a 22:00 hs</option>
+                                    <option value="22:00">22:00 a 23:00 hs</option>
+                                </select>
+                                <span class="feedback-message" id="msg-horario"></span>
+                            </div>
+                        </div>
+
+                        <!-- Campo 6: Cancha / Espacio (radio group) -->
+                        <div class="form-group" id="group-cancha">
+                            <label class="label-group">Seleccioná la Cancha *</label>
+                            <div class="radio-options-flex">
+                                <label class="radio-label">
+                                    <input type="radio" name="cancha" value="Cancha Central Cristal" required>
+                                    <span class="radio-custom"></span>
+                                    <span>🎾 Pádel Techado Cristal ($12.000)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="cancha" value="Cancha Panorámica Abierta">
+                                    <span class="radio-custom"></span>
+                                    <span>🎾 Pádel Panorámica Abierta ($10.000)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="cancha" value="Cancha Sintético Fútbol 5">
+                                    <span class="radio-custom"></span>
+                                    <span>⚽ Fútbol 5 Césped Pro ($16.000)</span>
+                                </label>
+                            </div>
+                            <span class="feedback-message" id="msg-cancha"></span>
+                        </div>
+                    </fieldset>
+
+                    <!-- 3. Adicionales y Notas (Fieldset) -->
+                    <fieldset class="form-fieldset">
+                        <legend>3. Servicios Adicionales y Comentarios</legend>
+
+                        <!-- Campo 7: Servicios Adicionales (checkbox group) -->
+                        <div class="form-group" id="group-adicionales">
+                            <label class="label-group">Adicionales opcionales:</label>
+                            <div class="checkbox-options-grid">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="adicionales" value="Paletas y Pelotas">
+                                    <span class="checkbox-custom"></span>
+                                    <span>Alquiler de paletas / pelotas</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="adicionales" value="Vestuarios Premium">
+                                    <span class="checkbox-custom"></span>
+                                    <span>Acceso a vestuario premium y toallas</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="adicionales" value="Iluminación Pro">
+                                    <span class="checkbox-custom"></span>
+                                    <span>Iluminación LED alta potencia</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Campo 8: Observaciones (textarea) -->
+                        <div class="form-group" id="group-notas">
+                            <label for="notas">Observaciones o requerimientos especiales (Opcional)</label>
+                            <textarea id="notas" name="notas" rows="3" class="form-control" placeholder="Aclaraciones sobre el partido, requerimiento de pecheras, etc."></textarea>
+                            <span class="char-counter" id="notas-counter">0 / 200 caracteres</span>
+                        </div>
+                    </fieldset>
+
+                    <!-- Botones de Acción -->
+                    <div class="form-actions">
+                        <button type="reset" class="btn btn-secondary" id="btn-reset">Limpiar Formulario</button>
+                        <button type="submit" class="btn btn-primary btn-lg" id="btn-submit">Confirmar Reserva</button>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <div class="logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">Arena<strong>Rosario</strong></span>
+                </div>
+                <p class="footer-desc">El mejor complejo deportivo de la ciudad.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="servicios.html">Canchas y Tarifas</a></li>
+                    <li><a href="reservar.html">Formulario de Reserva</a></li>
+                    <li><a href="mis-reservas.html">Panel de Turnos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <address class="footer-address">
+                    <p>📍 Av. Pellegrini 2450, Rosario</p>
+                    <p>📞 (0341) 456-7890</p>
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Arena Rosario - Tecnicatura Universitaria en Programación (UTN FRRo)</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/validaciones.js"></script>
+</body>
+</html>
