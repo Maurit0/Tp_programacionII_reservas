@@ -1,8 +1,8 @@
-﻿/**
+/**
  * ==========================================================================
- * RESERVASCRUD.JS - GestiÃ³n completa de reservas con LocalStorage (CRUD)
- * Integrante: TomÃ¡s Ayala (@ayalatomas-tsa)
- * ProgramaciÃ³n II - UTN FRRo
+ * RESERVASCRUD.JS - Gestión completa de reservas con LocalStorage (CRUD)
+ * Integrante: Tomás Ayala (@ayalatomas-tsa)
+ * Programación II - UTN FRRo
  * ==========================================================================
  */
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (inputBuscar) inputBuscar.addEventListener("input", actualizarVista);
     if (filtroCancha) filtroCancha.addEventListener("change", actualizarVista);
 
-    // 2. DelegaciÃ³n de eventos para Cancelar y Editar
+    // 2. Delegación de eventos para Cancelar y Editar
     contenedor.addEventListener("click", (e) => {
         const btnEliminar = e.target.closest(".btn-eliminar");
         if (btnEliminar) {
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // 3. Modal de EdiciÃ³n
+    // 3. Modal de Edición
     if (btnCerrarModal) btnCerrarModal.addEventListener("click", cerrarModalEdicion);
     if (btnCancelarModal) btnCancelarModal.addEventListener("click", cerrarModalEdicion);
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const reservas = obtenerReservasStorage();
             const choca = reservas.some(r => r.id !== idEditar && r.fecha === nuevaFecha && r.horario === nuevoHorario && r.cancha === nuevaCancha);
             if (choca) {
-                alert(`El horario de las ${nuevoHorario} hs para la ${nuevaCancha} ya estÃ¡ ocupado.`);
+                alert(`El horario de las ${nuevoHorario} hs para la ${nuevaCancha} ya está ocupado.`);
                 return;
             }
 
@@ -128,9 +128,9 @@ function actualizarVista() {
     if (filtradas.length === 0) {
         contenedor.innerHTML = `
             <div class="empty-state">
-                <div class="empty-icon">ðŸ”</div>
+                <div class="empty-icon">🔍</div>
                 <h3>No se encontraron reservas</h3>
-                <p>${reservas.length === 0 ? "AÃºn no registraste ningÃºn turno." : "Ninguna reserva coincide con los filtros aplicados."}</p>
+                <p>${reservas.length === 0 ? "Aún no registraste ningún turno." : "Ninguna reserva coincide con los filtros aplicados."}</p>
                 <a href="reservar.html" class="btn btn-primary">Reservar un Turno</a>
             </div>
         `;
@@ -153,16 +153,16 @@ function actualizarVista() {
                 </div>
             </div>
             <div class="reserva-details">
-                <span>ðŸ“… <strong>Fecha:</strong> ${fechaFormateada}</span>
-                <span>â° <strong>Horario:</strong> ${res.horario} hs</span>
-                <span>ðŸ“ž <strong>Tel:</strong> ${res.telefono}</span>
-                <span>âœ‰ï¸ <strong>Email:</strong> ${res.email}</span>
+                <span>📅 <strong>Fecha:</strong> ${fechaFormateada}</span>
+                <span>⏰ <strong>Horario:</strong> ${res.horario} hs</span>
+                <span>📞 <strong>Tel:</strong> ${res.telefono}</span>
+                <span>✉️ <strong>Email:</strong> ${res.email}</span>
                 <span><strong>Extras:</strong> ${extras}</span>
-                ${res.notas ? `<span>ðŸ’¬ <em>"${res.notas}"</em></span>` : ""}
+                ${res.notas ? `<span>💬 <em>"${res.notas}"</em></span>` : ""}
             </div>
             <div class="reserva-card-actions">
-                <button class="btn btn-sm btn-outline btn-editar" data-id="${res.id}">âœï¸ Modificar</button>
-                <button class="btn btn-sm btn-danger btn-eliminar" data-id="${res.id}">ðŸ—‘ï¸ Cancelar</button>
+                <button class="btn btn-sm btn-outline btn-editar" data-id="${res.id}">✏️ Modificar</button>
+                <button class="btn btn-sm btn-danger btn-eliminar" data-id="${res.id}">🗑️ Cancelar</button>
             </div>
         `;
         contenedor.appendChild(tarjeta);
@@ -170,7 +170,7 @@ function actualizarVista() {
 }
 
 function confirmarYBorrarReserva(id) {
-    if (!confirm("Â¿EstÃ¡s seguro de que deseÃ¡s cancelar este turno deportivo?")) return;
+    if (!confirm("¿Estás seguro de que deseás cancelar este turno deportivo?")) return;
     const filtradas = obtenerReservasStorage().filter(r => r.id !== id);
     guardarReservasStorage(filtradas);
     actualizarVista();
@@ -218,7 +218,7 @@ function cargarDatosInicialesSiVacio() {
         const demo = [
             {
                 id: 1718000000001,
-                nombre: "Lucas GimÃ©nez",
+                nombre: "Lucas Giménez",
                 email: "lucas.gimenez@gmail.com",
                 telefono: "3415896321",
                 fecha: manana.toISOString().split("T")[0],
@@ -230,14 +230,14 @@ function cargarDatosInicialesSiVacio() {
             },
             {
                 id: 1718000000002,
-                nombre: "Martina BenÃ­tez",
+                nombre: "Martina Benítez",
                 email: "martina.b@hotmail.com",
                 telefono: "3414987123",
                 fecha: pasado.toISOString().split("T")[0],
                 horario: "21:00",
-                cancha: "Cancha SintÃ©tico FÃºtbol 5",
-                adicionales: ["IluminaciÃ³n Pro"],
-                notas: "Torneo relÃ¡mpago con amigos.",
+                cancha: "Cancha Sintético Fútbol 5",
+                adicionales: ["Iluminación Pro"],
+                notas: "Torneo relámpago con amigos.",
                 fechaRegistro: new Date().toLocaleDateString("es-AR")
             }
         ];

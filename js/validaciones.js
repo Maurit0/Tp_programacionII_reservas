@@ -1,8 +1,8 @@
-﻿/**
+/**
  * ==========================================================================
- * VALIDACIONES.JS - ValidaciÃ³n en tiempo real y lÃ³gica de reserva
- * Integrante: TomÃ¡s Ayala (@ayalatomas-tsa)
- * ProgramaciÃ³n II - UTN FRRo
+ * VALIDACIONES.JS - Validación en tiempo real y lógica de reserva
+ * Integrante: Tomás Ayala (@ayalatomas-tsa)
+ * Programación II - UTN FRRo
  * ==========================================================================
  */
 
@@ -21,35 +21,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const notasCounter = document.getElementById("notas-counter");
     const formAlert = document.getElementById("form-alert");
 
-    // Establecemos la fecha mÃ­nima permitida (hoy) en el campo date
+    // Establecemos la fecha mínima permitida (hoy) en el campo date
     establecerFechaMinima(inputFecha);
 
     // ======================================================================
     // 1. Validaciones en tiempo real (eventos 'input' y 'blur')
     // ======================================================================
 
-    // Nombre y Apellido: al menos 3 letras, solo caracteres alfabÃ©ticos y espacios
+    // Nombre y Apellido: al menos 3 letras, solo caracteres alfabéticos y espacios
     inputNombre.addEventListener("input", () => {
         validarNombre(inputNombre);
     });
 
-    // Email: formato estÃ¡ndar de correo
+    // Email: formato estándar de correo
     inputEmail.addEventListener("input", () => {
         validarEmail(inputEmail);
     });
 
-    // TelÃ©fono: solo nÃºmeros, entre 8 y 12 dÃ­gitos
+    // Teléfono: solo números, entre 8 y 12 dígitos
     inputTelefono.addEventListener("input", () => {
         validarTelefono(inputTelefono);
     });
 
-    // Fecha: no puede ser anterior al dÃ­a de hoy
+    // Fecha: no puede ser anterior al día de hoy
     inputFecha.addEventListener("change", () => {
         validarFecha(inputFecha);
         verificarDisponibilidadTurno();
     });
 
-    // Horario: debe seleccionar una opciÃ³n vÃ¡lida
+    // Horario: debe seleccionar una opción válida
     selectHorario.addEventListener("change", () => {
         validarHorario(selectHorario);
         verificarDisponibilidadTurno();
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ======================================================================
-    // 2. EnvÃ­o del formulario y persistencia en LocalStorage
+    // 2. Envío del formulario y persistencia en LocalStorage
     // ======================================================================
     formReserva.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -90,19 +90,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const esHorarioValido = validarHorario(selectHorario);
         const esCanchaValida = validarCancha();
 
-        // Si alguno falla, detenemos el envÃ­o y mostramos aviso
+        // Si alguno falla, detenemos el envío y mostramos aviso
         if (!esNombreValido || !esEmailValido || !esTelefonoValido || !esFechaValida || !esHorarioValido || !esCanchaValida) {
-            mostrarAlerta("Por favor, corregÃ­ los campos marcados en rojo antes de continuar.", "error");
+            mostrarAlerta("Por favor, corregí los campos marcados en rojo antes de continuar.", "error");
             return;
         }
 
-        // VALIDACIÃ“N CRUZADA: Verificar que el turno no estÃ© ya ocupado
+        // VALIDACIÓN CRUZADA: Verificar que el turno no esté ya ocupado
         const canchaSeleccionada = document.querySelector('input[name="cancha"]:checked').value;
         const fechaElegida = inputFecha.value;
         const horarioElegido = selectHorario.value;
 
         if (existeTurnoDuplicado(fechaElegida, horarioElegido, canchaSeleccionada)) {
-            mostrarAlerta(`El horario de las ${horarioElegido} hs para la ${canchaSeleccionada} ya se encuentra reservado en esa fecha. Por favor elegÃ­ otro horario o cancha.`, "error");
+            mostrarAlerta(`El horario de las ${horarioElegido} hs para la ${canchaSeleccionada} ya se encuentra reservado en esa fecha. Por favor elegí otro horario o cancha.`, "error");
             marcarError(selectHorario, "msg-horario", "Turno no disponible para esta cancha.");
             return;
         }
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Construimos el objeto de la nueva reserva
         const nuevaReserva = {
-            id: Date.now(), // Identificador Ãºnico numÃ©rico basado en timestamp
+            id: Date.now(), // Identificador único numérico basado en timestamp
             nombre: inputNombre.value.trim(),
             email: inputEmail.value.trim(),
             telefono: inputTelefono.value.trim(),
@@ -131,16 +131,16 @@ document.addEventListener("DOMContentLoaded", () => {
         guardarReservaEnStorage(nuevaReserva);
 
         // Feedback positivo y reseteo
-        mostrarAlerta(`Â¡Reserva confirmada con Ã©xito a nombre de ${nuevaReserva.nombre}! PodÃ©s revisarla o modificarla en la secciÃ³n "Mis Reservas".`, "success");
+        mostrarAlerta(`¡Reserva confirmada con éxito a nombre de ${nuevaReserva.nombre}! Podés revisarla o modificarla en la sección "Mis Reservas".`, "success");
         formReserva.reset();
         limpiarEstadosValidacion();
         if (notasCounter) notasCounter.textContent = "0 / 200 caracteres";
 
-        // Scroll suave al mensaje de Ã©xito
+        // Scroll suave al mensaje de éxito
         formAlert.scrollIntoView({ behavior: "smooth", block: "center" });
     });
 
-    // Limpieza al presionar botÃ³n reset
+    // Limpieza al presionar botón reset
     formReserva.addEventListener("reset", () => {
         limpiarEstadosValidacion();
         formAlert.classList.add("hidden");
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================================================
-// FUNCIONES AUXILIARES DE VALIDACIÃ“N
+// FUNCIONES AUXILIARES DE VALIDACIÓN
 // ==========================================================================
 
 function establecerFechaMinima(inputFecha) {
@@ -162,13 +162,13 @@ function establecerFechaMinima(inputFecha) {
 
 function validarNombre(input) {
     const valor = input.value.trim();
-    const regexNombre = /^[a-zA-ZÃ¡Ã©Ã­Ã³ÃºÃÃ‰ÃÃ“ÃšÃ±Ã‘\s]{3,50}$/;
+    const regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,50}$/;
 
     if (valor === "") {
         marcarError(input, "msg-nombre", "El nombre y apellido son obligatorios.");
         return false;
     } else if (!regexNombre.test(valor)) {
-        marcarError(input, "msg-nombre", "IngresÃ¡ un nombre vÃ¡lido (solo letras, mÃ­n. 3 caracteres).");
+        marcarError(input, "msg-nombre", "Ingresá un nombre válido (solo letras, mín. 3 caracteres).");
         return false;
     } else {
         marcarValido(input, "msg-nombre");
@@ -181,10 +181,10 @@ function validarEmail(input) {
     const regexEmail = /^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
 
     if (valor === "") {
-        marcarError(input, "msg-email", "El correo electrÃ³nico es obligatorio.");
+        marcarError(input, "msg-email", "El correo electrónico es obligatorio.");
         return false;
     } else if (!regexEmail.test(valor)) {
-        marcarError(input, "msg-email", "IngresÃ¡ un correo vÃ¡lido (ej: nombre@dominio.com).");
+        marcarError(input, "msg-email", "Ingresá un correo válido (ej: nombre@dominio.com).");
         return false;
     } else {
         marcarValido(input, "msg-email");
@@ -197,10 +197,10 @@ function validarTelefono(input) {
     const regexTel = /^[0-9]{8,12}$/;
 
     if (valor === "") {
-        marcarError(input, "msg-telefono", "El telÃ©fono de contacto es obligatorio.");
+        marcarError(input, "msg-telefono", "El teléfono de contacto es obligatorio.");
         return false;
     } else if (!regexTel.test(valor)) {
-        marcarError(input, "msg-telefono", "IngresÃ¡ un telÃ©fono vÃ¡lido de 8 a 12 dÃ­gitos (solo nÃºmeros).");
+        marcarError(input, "msg-telefono", "Ingresá un teléfono válido de 8 a 12 dígitos (solo números).");
         return false;
     } else {
         marcarValido(input, "msg-telefono");
@@ -211,7 +211,7 @@ function validarTelefono(input) {
 function validarFecha(input) {
     const valor = input.value;
     if (!valor) {
-        marcarError(input, "msg-fecha", "TenÃ©s que seleccionar una fecha para el turno.");
+        marcarError(input, "msg-fecha", "Tenés que seleccionar una fecha para el turno.");
         return false;
     }
 
@@ -231,7 +231,7 @@ function validarFecha(input) {
 function validarHorario(select) {
     const valor = select.value;
     if (!valor) {
-        marcarError(select, "msg-horario", "SeleccionÃ¡ una franja horaria.");
+        marcarError(select, "msg-horario", "Seleccioná una franja horaria.");
         return false;
     } else {
         marcarValido(select, "msg-horario");
@@ -245,7 +245,7 @@ function validarCancha() {
     const grupoCancha = document.getElementById("group-cancha");
 
     if (!seleccionada) {
-        if (msgCancha) msgCancha.textContent = "TenÃ©s que elegir una cancha para tu partido.";
+        if (msgCancha) msgCancha.textContent = "Tenés que elegir una cancha para tu partido.";
         if (grupoCancha) grupoCancha.classList.add("is-invalid");
         return false;
     } else {
@@ -308,7 +308,7 @@ function marcarValido(elemento, idMensaje) {
         grupo.classList.add("is-valid");
     }
     if (spanMsg) {
-        spanMsg.textContent = "âœ“ Correcto";
+        spanMsg.textContent = "✓ Correcto";
     }
 }
 
