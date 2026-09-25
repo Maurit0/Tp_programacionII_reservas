@@ -109,6 +109,7 @@
     border: none;
     cursor: pointer;
     padding: 0;
+    z-index: 101;
 }
 
 .hamburger-bar {
@@ -116,7 +117,20 @@
     height: 3px;
     background-color: var(--text-primary);
     border-radius: 3px;
-    transition: all var(--transition-normal);
+    transition: transform var(--transition-normal), opacity var(--transition-normal);
+}
+
+/* Animación a cruz (X) del menú hamburguesa */
+.menu-toggle.is-active .hamburger-bar:nth-child(1) {
+    transform: translateY(9.5px) rotate(45deg);
+}
+
+.menu-toggle.is-active .hamburger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.is-active .hamburger-bar:nth-child(3) {
+    transform: translateY(-9.5px) rotate(-45deg);
 }
 
 /* 2. Secciones Generales */
@@ -363,4 +377,142 @@
     text-align: center;
     font-size: 0.85rem;
     color: #64748b;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (3 Breakpoints requeridos por la cátedra)
+   ========================================================================== */
+
+/* Breakpoint 1: Escritorio / Desktop (> 1024px)
+   - Layout predeterminado arriba con Grids expandidos y máxima amplitud
+*/
+
+/* Breakpoint 2: Tablet (768px a 1023px) */
+@media screen and (max-width: 1023px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-surface);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: var(--shadow-md);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.25rem;
+        display: none;
+        animation: fadeIn 0.25s ease-out;
+    }
+
+    .main-nav.is-open {
+        display: flex;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.3rem;
+    }
+}
+
+/* Breakpoint 3: Celular / Mobile (< 480px) */
+@media screen and (max-width: 480px) {
+    .section {
+        padding: 3rem 0;
+    }
+
+    .hero-section {
+        padding: 4rem 1rem;
+    }
+
+    .hero-title {
+        font-size: 1.85rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .courts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cta-container h2,
+    .cta-container p {
+        text-align: center;
+    }
+
+    .cta-container .btn {
+        width: 100%;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .panel-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box, .filter-box {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .form-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .form-wrapper {
+        padding: 1.5rem 1rem;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
 }
