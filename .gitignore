@@ -1,0 +1,14 @@
+# Material de estudio y apuntes de la cátedra (no subir al repo del TP)
+Estilos CSS/
+Estructura HTML/
+Estructura de datos Java/
+Funciones especiales/
+Introduccion a Java/
+Manejo de DOM/
+TP1-2026.pdf
+
+# Archivos del sistema y temporales
+.DS_Store
+Thumbs.db
+*.tmp
+.vscode/
