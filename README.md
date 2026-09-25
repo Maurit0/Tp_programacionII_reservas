@@ -5,7 +5,7 @@ Trabajo Práctico N° 1 para la asignatura **Programación II**
 
 ## 👥 Integrantes
 * **Mauro Alegre** (Maurit0)
-* *(Segundo integrante)*
+* **Tomás Ayala** (ayalatomas-tsa)
 
 ## 📌 Descripción del Proyecto
 Aplicación web frontend para la gestión y reserva de turnos en un complejo deportivo (canchas de pádel y fútbol 5 sintético). Permite a los usuarios consultar las instalaciones, reservar un turno mediante un formulario con validaciones en tiempo real, y administrar sus reservas (listar, editar y cancelar) simulando persistencia de datos mediante `localStorage`.
