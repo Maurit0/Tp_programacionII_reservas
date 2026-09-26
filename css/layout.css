@@ -501,11 +501,38 @@
     }
 
     .form-grid-2 {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .form-grid-2 > *,
+    .form-group {
+        min-width: 0;
     }
 
     .form-wrapper {
+        width: 100%;
+        max-width: 100%;
         padding: 1.5rem 1rem;
+    }
+
+    .form-fieldset {
+        min-width: 0;
+        padding: 1rem;
+    }
+
+    .form-control {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .radio-label,
+    .checkbox-label {
+        min-width: 0;
+    }
+
+    .radio-label span,
+    .checkbox-label span {
+        overflow-wrap: anywhere;
     }
 
     .form-actions {
