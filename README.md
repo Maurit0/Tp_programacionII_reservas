@@ -11,6 +11,26 @@ Ciclo Lectivo: **2026**
 * **Tomás Ayala** (GitHub: [@ayalatomas-tsa](https://github.com/ayalatomas-tsa))
 
 ---
+## > Capturas de pantalla
+
+A continuación se muestran las principales secciones de **Arena Rosario** y las funcionalidades implementadas.
+
+### Página de Inicio
+
+![Página de inicio de Arena Rosario](assets/images/captura-inicio.png)
+
+### Canchas y Servicios
+
+![Página de canchas y servicios](assets/images/captura-canchas-y-reservas.png)
+
+### Formulario de Reserva
+
+![Formulario para registrar un nuevo turno](assets/images/captura-reservar-turno.png)
+
+### Panel de Reservas
+
+![Panel de reservas registradas](assets/images/captura-mis-reservas.png)
+---
 
 ## > Descripción del Proyecto
 **Arena Rosario** es una aplicación web frontend interactiva orientada a la reserva y gestión de turnos para un complejo deportivo de canchas de pádel panorámicas y fútbol 5 sintético.
