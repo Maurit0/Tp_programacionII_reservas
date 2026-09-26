@@ -6,20 +6,20 @@ Ciclo Lectivo: **2026**
 
 ---
 
-## 👥 Integrantes del Equipo
+## > Integrantes del Equipo
 * **Mauro Alegre** (GitHub: [@Maurit0](https://github.com/Maurit0))
 * **Tomás Ayala** (GitHub: [@ayalatomas-tsa](https://github.com/ayalatomas-tsa))
 
 ---
 
-## 📌 Descripción del Proyecto
+## > Descripción del Proyecto
 **Arena Rosario** es una aplicación web frontend interactiva orientada a la reserva y gestión de turnos para un complejo deportivo de canchas de pádel panorámicas y fútbol 5 sintético.
 
 El sistema fue diseñado bajo una arquitectura limpia y modular de **4 páginas HTML semánticas**, maquetado **exclusivamente con CSS3 nativo (Flexbox y CSS Grid)** sin frameworks externos, y con una capa de lógica en **JavaScript (ES6+)** que implementa validación de formularios en tiempo real y persistencia completa de datos mediante la API `localStorage` (simulando un backend local).
 
 ---
 
-## 🛠️ Tecnologías y Estándares Utilizados
+## > Tecnologías y Estándares Utilizados
 * **HTML5 Semántico:** Uso exhaustivo de `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<address>` y `<footer>`.
 * **CSS3 Nativo:** Maquetación combinada con **CSS Grid** (grilla de canchas, footer y layout) y **Flexbox** (navegación, tarjetas de beneficios y controles de formulario).
 * **Responsive Web Design:** 3 puntos de quiebre (*breakpoints*) para Desktop (>1024px), Tablet (768px a 1023px) con menú hamburguesa colapsable animado, y Mobile (<480px) con reordenamiento en stack vertical.
@@ -29,7 +29,7 @@ El sistema fue diseñado bajo una arquitectura limpia y modular de **4 páginas 
 
 ---
 
-## 📋 Funcionalidades Implementadas
+## > Funcionalidades Implementadas
 
 ### 1. Navegación y Páginas del Sitio
 1. **`index.html` (Inicio):** Landing page con Hero Banner, llamado a la acción (CTA), sección de beneficios y presentación de canchas disponibles.
@@ -58,7 +58,7 @@ El sistema fue diseñado bajo una arquitectura limpia y modular de **4 páginas 
 
 ---
 
-## 🚀 Instrucciones para Ejecutar el Proyecto
+## > Instrucciones para Ejecutar el Proyecto
 1. Clonar el repositorio público:
    ```bash
    git clone https://github.com/Maurit0/Tp_programacionII_reservas.git
@@ -72,7 +72,7 @@ El sistema fue diseñado bajo una arquitectura limpia y modular de **4 páginas 
 
 ---
 
-## 📂 Estructura del Repositorio
+## > Estructura del Repositorio
 ```text
 /
 ├── .gitignore
